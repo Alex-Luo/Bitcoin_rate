@@ -23,6 +23,22 @@ function getUSD(dollarAmount, callback) {
 }
 
 app.get('/calculate', function (req, res) {
+
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+
+
   var dollarAmount= (req.query.dollarAmount || 1);
   getUSD(dollarAmount, function(data){
     res.send(data.toString());
@@ -30,7 +46,7 @@ app.get('/calculate', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  fs.readFile('sample.html', function(err, text){
+  fs.readFile('HTML/index.html', function(err, text){
     res.setHeader('Content-Type', 'text/html');
     res.end(text);
   });
