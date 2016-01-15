@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var http = require('https');
-
+var fs = require('fs');
 
 function getUSD(callback) {
 	http.get('https://blockchain.info/ticker', function(res) {
@@ -21,13 +21,20 @@ function getUSD(callback) {
     console.log('Got error: ' + e.message);
   });
 }
-  
-app.get('/', function (req, res) {
+
+app.get('/calculate', function (req, res) {
   getUSD(function(data){
     res.send(data.toString());
   });
 });
 
+app.get('/', function (req, res) {
+  fs.readFile("sample.html", function(err, text){
+    res.setHeader("Content-Type", "text/html");
+    res.end(text);
+  });
+  return;
+});
 
 var server = app.listen(3000, function () {
 	var host = server.address().address;
