@@ -1,6 +1,25 @@
 <!doctype html>
+<script type="text/javascript">
+	function calculate(){
+		var bitcoinAmount = document.getElementById('amount').value;
+		console.log(bitcoinAmount);
+		alert(httpGetHelper(bitcoinAmount));
+	}
+	function httpGetHelper(bitcoinAmount){
+ 	 $.ajax({
+ 	 url:'http://localhost:3000/calculate?dollarAmount='+bitcoinAmount,
+ 	 type:"GET",
+ 	 data:JSON.stringify({}),
+ 	 contentType:"application/json; charset=utf-8",
+ 	 dataType:"json",
+ 	 success: function(){
+   		 window.location.href = "./success.html";
+ 	 }});
+	}
+</script>
 <html>
 	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 			<style type = "text/css">
 				body {font-family:Arial, Sans-Serif;}
 
@@ -11,15 +30,18 @@
 			</style>
 	</head>
 	<body>
-			<div id = "amount">
+			<div> 
 				<form>
 					<h1>Get Bitcoin Amount</h1>
-					<div class = "line"><label for="Amount">Amount : </label><input type ="text" id="amount"/></div>
+					<div class = "line">
+						<label for="Amount">Amount : </label>
+						<input type ="text" id="amount"/>
+					</div>
 
 				</form>
 			</div>
 
-			<button type="button" onclick = "alert('$0.00')">ENTER</button>
+			<button type="button" onclick = calculate()>ENTER</button>
 
 	</body>
-<html>
+</html>
