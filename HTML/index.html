@@ -13,6 +13,17 @@
         callback(value);
      }});
 	}
+	
+	function searchKeyPress(e){
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13){
+        document.getElementById('enter').click();
+        return false;
+    }
+    return true;
+	}
+	
 </script>
 <html>
 	<head>
@@ -41,6 +52,7 @@
 	</head>
 	
 <body>	
+	
 		<a href="https://github.com/Alex-Luo/Bitcoin_rate">
 			<img style="position: relative; top: 0; left: 0; border: 0;" 
 			src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" 
@@ -53,10 +65,11 @@
 				<form class = "form" role="form">
 					<div class="form-group">
 						<label for="Amount">Amount:</label>
-						<input type="text" class="form-control" id="amount" placeholder="Enter bitcoin amount">
+						<input type="text" class="form-control" id="amount" placeholder="Enter bitcoin amount" onkeypress = "return searchKeyPress(event);">
 					</div>
 			
-					<button type="button" class="btn btn-default" onclick = calculate()>ENTER</button>
+					<button type="button" id= "enter" class="btn btn-default" onclick = calculate()>ENTER</button>
+				</form>
 		</div>
 			
 			
