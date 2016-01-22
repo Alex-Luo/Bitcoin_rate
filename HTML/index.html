@@ -2,7 +2,7 @@
 <script type="text/javascript">
 	function calculate(){
 		var bitcoinAmount = document.getElementById('amount').value;
-		httpGetHelper(bitcoinAmount, alert);
+		httpGetHelper(bitcoinAmount, writeTotal);
 	}
 
 	function httpGetHelper(bitcoinAmount, callback){
@@ -13,6 +13,13 @@
         callback(value);
      }});
 	}
+	
+	function writeTotal(value) {
+		value = Math.round(value * 100) / 100
+		document.getElementById("total").innerHTML = '$'+ value;
+	}
+	
+	
 	
 	function searchKeyPress(e){
     // look for window.event in case event isn't passed in
@@ -47,7 +54,6 @@
 					background: #000;
 					color: #fff;
 				}
-
 			</style>
 	</head>
 	
@@ -61,7 +67,7 @@
 		</a>
 		
 		<div class="container">
-			<h2>Bitcoin Converter</h2>
+			<h1>Bitcoin Converter</h1>
 				<form class = "form" role="form">
 					<div class="form-group">
 						<label for="Amount">Amount:</label>
@@ -69,8 +75,15 @@
 					</div>
 			
 					<button type="button" id= "enter" class="btn btn-default" onclick = calculate()>ENTER</button>
+					
+					
 				</form>
 		</div>
+		
+		<div class="container">
+			<p id = "total"></p>
+		</div>
+
 			
 			
 </body>
