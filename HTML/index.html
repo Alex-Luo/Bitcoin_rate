@@ -22,11 +22,11 @@
 	
 	
 	
-	function searchKeyPress(e){
+	function searchKeyDown(e){
     // look for window.event in case event isn't passed in
     e = e || window.event;
     if (e.keyCode == 13){
-        document.getElementById('enter').click();
+        calculate();
         return false;
     }
     return true;
@@ -46,15 +46,6 @@
 				body {font-family:Arial, Sans-Serif;}
 				#container {width:100%; margin:0 auto;}
 				form label{display:inline-block; width:140px}
-				
-				.btn-default {
-					background: #fff;
-					color: #000;
-				}
-				.btn-default:hover {
-					background: #000;
-					color: #fff;
-				}
 				p1 {
 					font-size: 1000%;
 				}
@@ -78,11 +69,11 @@
 					<h1>Bitcoin Converter</h1>
 					<div class="form-group">
 						<label for="Amount">Amount:</label>
-						<input type="text" class="form-control" id="amount" placeholder="Enter bitcoin amount" onkeypress = "calculate();">
-					</div>
-			
-					<button type="button" id= "enter" class="btn btn-default" onclick = calculate()>ENTER</button>
-					
+						<input type="text" class="form-control" id="amount" placeholder="Enter bitcoin amount" 
+						onkeypress = "calculate();" 
+						onkeydown = "return searchKeyDown(event);" 
+						>
+					</div>					
 					
 				</form>
 			</div>
