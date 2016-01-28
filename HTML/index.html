@@ -1,10 +1,12 @@
 <!doctype html>
 <script type="text/javascript">
+	//Caluclate Function
 	function calculate(){
 		var bitcoinAmount = document.getElementById('amount').value;
 		httpGetHelper(bitcoinAmount, writeTotal);
 	}
 
+	//calls USD Bitcoin value from backend.
 	function httpGetHelper(bitcoinAmount, callback){
      $.ajax({
      url:'http://localhost:3000/calculate?dollarAmount='+bitcoinAmount,
@@ -14,6 +16,7 @@
      }});
 	}
 	
+	//Writes to HTML
 	function writeTotal(value) {
 		var bitcoinAmount = document.getElementById('amount').value;
 		value = Math.round(value * bitcoinAmount * 100) / 100
@@ -35,13 +38,16 @@
 </script>
 <html>
 	<head>
+		<! ------------------ Jquery Script Sources ------------------------>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<! -------------------------- Bootstrap ---------------------------->
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<! ---------------------------- CSS ---------------------------->
 			<style type = "text/css">
 				body {font-family:Arial, Sans-Serif;}
 				#container {width:100%; margin:0 auto;}
@@ -54,7 +60,7 @@
 	</head>
 	
 <body>	
-	
+		<! -------------------- Github Ribbon -------------------------->
 		<a href="https://github.com/Alex-Luo/Bitcoin_rate">
 			<img style="position: relative; top: 0; left: 0; border: 0;" 
 			src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" 
@@ -62,22 +68,24 @@
 			data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
 		</a>
 		
-		
+		<!----------------------------- Form Collum ------------------------------>
 		<div class="row">
 			<div class = "col-md-3 col-md-offset-1">
 				<form class = "form" role="form">
 					<h1>Bitcoin Converter</h1>
+					
+					<! -------------- Start of Form ------------------>
 					<div class="form-group">
 						<label for="Amount">Amount:</label>
 						<input type="text" class="form-control" id="amount" placeholder="Enter bitcoin amount" 
 						onkeypress = "calculate();" 
-						onkeydown = "return searchKeyDown(event);" 
-						>
+						onkeydown = "return searchKeyDown(event);"</input>
 					</div>					
 					
 				</form>
 			</div>
-		
+			
+			<! --------------------S Total Collum ---------------------------------------->
 			<div class="col-md-3 col-md-offset-1">
 				<p1 id ="total" class="text-success"><font size ="12"></font></p>
 			</div>
