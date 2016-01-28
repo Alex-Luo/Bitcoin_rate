@@ -15,7 +15,8 @@
 	}
 	
 	function writeTotal(value) {
-		value = Math.round(value * 100) / 100
+		var bitcoinAmount = document.getElementById('amount').value;
+		value = Math.round(value * bitcoinAmount * 100) / 100
 		document.getElementById("total").innerHTML = '$'+ value;
 	}
 	
@@ -42,7 +43,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 			<style type = "text/css">
-				@total-color = @brand-primary: darken(#428bca, 6.5%); // #337ab7
 				body {font-family:Arial, Sans-Serif;}
 				#container {width:100%; margin:0 auto;}
 				form label{display:inline-block; width:140px}
@@ -78,7 +78,7 @@
 					<h1>Bitcoin Converter</h1>
 					<div class="form-group">
 						<label for="Amount">Amount:</label>
-						<input type="text" class="form-control" id="amount" placeholder="Enter bitcoin amount" onkeypress = "return searchKeyPress(event);">
+						<input type="text" class="form-control" id="amount" placeholder="Enter bitcoin amount" onkeypress = "calculate();">
 					</div>
 			
 					<button type="button" id= "enter" class="btn btn-default" onclick = calculate()>ENTER</button>
