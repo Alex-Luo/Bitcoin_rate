@@ -3,7 +3,7 @@ var app = express();
 var http = require('https');
 var fs = require('fs');
 
-function getUSD(dollarAmount, callback) {
+function getUSD(callback) {
 	http.get('https://blockchain.info/ticker', function(res) {
     var body = '';
     res.setEncoding('utf8');
@@ -14,7 +14,7 @@ function getUSD(dollarAmount, callback) {
 
     res.on('end', function() {
       body = JSON.parse(body);
-      callback(body.USD.last * dollarAmount);
+      callback(body.USD.last);
     });
 
   }).on('error', function(e) {
@@ -39,8 +39,7 @@ app.get('/calculate', function (req, res) {
 
 
 
-  var dollarAmount= (req.query.dollarAmount || 1);
-  getUSD(dollarAmount, function(data){
+  getUSD(function(data){
     res.send(data.toString());
   });
 });
