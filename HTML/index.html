@@ -9,7 +9,7 @@
 	//calls USD Bitcoin value from backend.
 	function httpGetHelper(bitcoinAmount, callback){
      $.ajax({
-     url:'http://localhost:3000/calculate?dollarAmount='+bitcoinAmount,
+     url:'https://localhost:3000/calculate?dollarAmount='+bitcoinAmount,
      type:"GET",
      success: function(value){
         callback(value);
