@@ -17,8 +17,6 @@
 	<br>
 	<br>
 </p>
-<br>
-<br>
 
 ## Website
 You can visit the website by clicking [here](https://bitcoin-converter.herokuapp.com/)
