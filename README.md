@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-	<img src="iamges/bitcoin.jpg" alt="logo" width="300"/>
+	<img src="images/bitcoin.jpg" alt="logo" width="300"/>
 	<br><img src="https://img.shields.io/badge/version-0.*.*--prelaunch-brightgreen.svg" alt="Version number"/>
 	<a href="LICENSE">
 		<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT Licensed"/>
