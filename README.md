@@ -10,6 +10,13 @@
 	Realtime Bitcoin Conversion Website.
 	<br>
 </p>
+<p align="center">
+	<a href="demo">
+		<img src="images/demo.gif" title="Conversion Demo" alt="web demo" border="10"/>
+	</a>
+	<br>
+	<br>
+</p>
 ## Future Plans
 Currently it only converts bitcoin to USD. I want to impliment a dropdown box next to the input box to convert to EUR, YEN, ect. 
 
